@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Models\User;
+use App\Models\Post;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +18,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+//inserting or Creating data
+Route::get('/create', function (){
+    $user = User::findOrFail(1);
+    $post = new Post(['title'=>'1st post of Shashank','body'=>'shashanks first post']);
+    $user->posts()->save($post);
+    return "Post Created😀";
 });
