@@ -27,3 +27,12 @@ Route::get('/create', function (){
     $user->posts()->save($post);
     return "Post Created😀";
 });
+
+//reading data
+Route::get('/read', function (){
+    $user = User::findOrFail(1);
+//    echo $user->posts;
+    foreach ($user->posts as $post){
+        echo $post->title."<br>";
+    }
+});
