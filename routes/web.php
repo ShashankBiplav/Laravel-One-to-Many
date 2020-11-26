@@ -36,3 +36,13 @@ Route::get('/read', function (){
         echo $post->title."<br>";
     }
 });
+
+//updating data
+Route::get('/update', function (){
+    $user = User::findOrFail(1);
+    $user->posts()->where('id', 2)->update([
+        'title'=> 'This title is updated',
+        'body' => 'Damn bruh I love how laravel works'
+    ]);
+    return "Post updated 😃😁";
+});
