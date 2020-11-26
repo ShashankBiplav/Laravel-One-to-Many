@@ -46,3 +46,10 @@ Route::get('/update', function (){
     ]);
     return "Post updated 😃😁";
 });
+
+//deleting data
+Route::get('/delete', function (){
+    $user = User::findOrFail(1);
+    $user->posts()->where('id', 1)->delete();
+    return "Damn man whatchya looki\'n here. The post is deleted go check in database🤪 ";
+});
